@@ -1,0 +1,26 @@
+.headerWrapper {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 2vh;
+}
+
+/* actual header box */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  width: 30vw;
+  background-color: #fff48f;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  font-size: 4rem;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #111;
+}

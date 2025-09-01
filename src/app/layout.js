@@ -1,6 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, EB_Garamond } from "next/font/google";
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
+// Existing Geist fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -9,6 +12,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// New EB Garamond font for your header/title
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // adjust weights as needed
+  variable: "--font-eb-garamond",
 });
 
 export const metadata = {
@@ -22,7 +32,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="border">
+          {/* Apply EB Garamond in the header */}
+          <Header className={ebGaramond.variable} />
+          {children}
+          {/* <Footer /> */}
+        </div>
       </body>
     </html>
   );
