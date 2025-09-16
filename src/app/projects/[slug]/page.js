@@ -3,42 +3,34 @@
 import projectStyle from "./page.module.css";
 import { projects } from "@/data/projects";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 export default function ProjectPage() {
-  const project = projects[0];
+  const { slug } = useParams();
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) return <p>Project not found</p>;
-  console.log(project.stats);
 
   return (
     <div className={projectStyle.body}>
       <h1 className={projectStyle.title}>{project.title}</h1>
       <p className={projectStyle.subtitle}>{project.subtitle}</p>
+
+      {/* HORIZONTAL SCROLL IMAGE GALLERY */}
       <section className={projectStyle.imageBox}>
-        <Image
-          className={projectStyle.image}
-          src={project.image}
-          alt={project.title}
-          width={500}
-          height={300}
-          style={{ maxWidth: "100%" }}
-        />
-        <Image
-          className={projectStyle.image}
-          src={project.image2}
-          alt={project.title}
-          width={500}
-          height={300}
-          style={{ maxWidth: "100%" }}
-        />
-        <Image
-          className={projectStyle.image}
-          src={project.image3}
-          alt={project.title}
-          width={500}
-          height={300}
-          style={{ maxWidth: "100%" }}
-        />
+        <div className={projectStyle.imageScroll}>
+          {project.images?.map((src, idx) => (
+            <div key={idx} className={projectStyle.imageWrapper}>
+              <Image
+                src={src}
+                alt={`${project.title} image ${idx + 1}`}
+                width={250}
+                height={100}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Highlighted Stats */}
@@ -50,10 +42,11 @@ export default function ProjectPage() {
               gap: "2rem",
               listStyle: "none",
               padding: 0,
+              flexWrap: "wrap",
             }}
           >
-            {(project.stats || []).map((stat) => (
-              <li key={stat.label}>
+            {project.stats.map((stat) => (
+              <li key={stat.label} style={{ minWidth: "150px" }}>
                 <strong>{stat.value}</strong>
                 <p>{stat.label}</p>
               </li>
@@ -61,6 +54,7 @@ export default function ProjectPage() {
           </ul>
         </section>
       )}
+
       <hr className={projectStyle.divider} />
 
       {/* Objective */}
@@ -74,13 +68,14 @@ export default function ProjectPage() {
       </section>
 
       <hr className={projectStyle.divider} />
+
       {/* Strategy */}
       <section className={projectStyle.twoColumn}>
         <div className={projectStyle.strategyLeft}>
           <a href={project.link} target="_blank" rel="noopener noreferrer">
             <Image
               className={projectStyle.image}
-              src={project.image4}
+              src={project.highlightImage || project.images[0]}
               alt={project.title}
               width={500}
               height={300}
@@ -105,6 +100,7 @@ export default function ProjectPage() {
       </section>
 
       <hr className={projectStyle.divider} />
+
       {/* Results */}
       <section>
         <h2 className={projectStyle.subheader}>Results</h2>
@@ -114,6 +110,7 @@ export default function ProjectPage() {
           ))}
         </ul>
       </section>
+
       <hr className={projectStyle.divider} />
     </div>
   );

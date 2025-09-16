@@ -84,17 +84,30 @@
 }
 
 .imageBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  overflow-x: auto; /* allow horizontal scrolling */
+  overflow-y: hidden;
+  padding: 1rem 0;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
 }
 
-.imageBox img {
-  width: 30%;
-  margin-left: 2%;
+.imageScroll {
+  display: flex;
+  gap: 1rem; /* space between images */
+  scroll-snap-type: x mandatory;
+}
+
+.imageWrapper {
+  flex: 0 0 auto; /* prevents images from shrinking */
+  scroll-snap-align: start; /* optional: snap images nicely */
+}
+
+.imageScroll::-webkit-scrollbar {
+  height: 8px; /* scrollbar thickness */
+}
+
+.imageScroll::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* scrollbar color */
+  border-radius: 4px;
 }
 
 .keystats {

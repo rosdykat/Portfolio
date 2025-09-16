@@ -7,6 +7,29 @@
   --foreground: #171717;
 }
 
+.thumbnailScroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.thumbnailWrapper {
+  flex: 0 0 auto;
+  width: 250px;
+  scroll-snap-align: start;
+}
+
+.thumbnailScroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.thumbnailScroll::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -39,4 +62,8 @@ body {
   width: 40vw;
   border: 1px solid black;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.53);
+}
+
+.main {
+  background-color: white;
 }
