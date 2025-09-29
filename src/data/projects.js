@@ -18,11 +18,11 @@ export const projects = [
       "Social media launch for a vegan fish finger and burger brand.",
     stats: [
       {
-        label: "Social Following",
-        value: "3,000+ across Instagram & Facebook",
+        label: "Follower growth across Instagram and Facebook",
+        value: "3,000+",
       },
       { label: "Giveaway Participants", value: "2,000+" },
-      { label: "Influencer Reach", value: "250,000+ views via @plantfuture" },
+      { label: "Influencer Reach", value: "250,000+" },
     ],
     content: {
       objective: [

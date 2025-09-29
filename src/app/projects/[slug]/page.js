@@ -39,16 +39,43 @@ export default function ProjectPage() {
           <ul
             style={{
               display: "flex",
+              justifyContent: "space-evenly",
+              minWidth: "100%",
               gap: "2rem",
               listStyle: "none",
-              padding: 0,
+              padding: 3,
               flexWrap: "wrap",
             }}
           >
             {project.stats.map((stat) => (
-              <li key={stat.label} style={{ minWidth: "150px" }}>
-                <strong>{stat.value}</strong>
-                <p>{stat.label}</p>
+              <li
+                key={stat.label}
+                style={{
+                  minWidth: "150px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center", // centers both value + label
+                  textAlign: "center", // keeps text centered too
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "2rem",
+                    fontWeight: "500",
+                  }}
+                >
+                  {stat.value}
+                </p>
+                <p
+                  style={{
+                    maxWidth: "150px",
+                    wordWrap: "break-word",
+                    textAlign: "center",
+                    marginTop: "0.5rem",
+                  }}
+                >
+                  {stat.label}
+                </p>
               </li>
             ))}
           </ul>
@@ -58,7 +85,7 @@ export default function ProjectPage() {
       <hr className={projectStyle.divider} />
 
       {/* Objective */}
-      <section>
+      <section className={projectStyle.objectiveBox}>
         <h2 className={projectStyle.subheader}>Objective</h2>
         <ul className={projectStyle.bulletPoint}>
           {project.content.objective.map((item, idx) => (
@@ -88,7 +115,7 @@ export default function ProjectPage() {
           <h2 className={projectStyle.subheader}>Strategy & Approach</h2>
           {project.content.strategy.map((item) => (
             <div key={item.title}>
-              <h3>{item.title}</h3>
+              <h3 className={projectStyle.strategyTitle}>{item.title}</h3>
               <ul className={projectStyle.bulletPoint}>
                 {item.details.map((d, i) => (
                   <li key={i}>{d}</li>

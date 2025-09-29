@@ -1,10 +1,13 @@
 .headerWrapper {
-  width: 100%;
+  width: 50%; /* match the intended header width */
+  margin: 0 auto; /* centers it horizontally */
   background-color: white;
   display: flex;
   justify-content: center;
-
   padding-bottom: 2vh;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.53);
 }
 
 /* actual header box */
@@ -13,7 +16,7 @@
   justify-content: center;
   align-items: center;
   height: 10vh;
-  width: 30vw;
+  width: 80%;
   background-color: #fff48f;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
